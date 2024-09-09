@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2015",              // Hỗ trợ ES2015 và các tính năng như Array.prototype.find()
+    "lib": ["es2015", "dom"],        // Bao gồm thư viện ES2015 và các API DOM
+    "module": "commonjs",            // Sử dụng module CommonJS
+    "strict": true,                  // Kiểm tra nghiêm ngặt
+    "esModuleInterop": true,         // Hỗ trợ module CommonJS
+    "skipLibCheck": true,            // Bỏ qua kiểm tra type trong các thư viện
+    "forceConsistentCasingInFileNames": true, // Cưỡng ép phân biệt chữ hoa thường trong tên file
+    "outDir": "./dist",              // Thư mục đầu ra sau khi biên dịch
+    "rootDir": "./src",              // Thư mục chứa mã nguồn
+    "moduleResolution": "node",      // Giải quyết module theo cách Node.js làm
+    "allowJs": true,                 // Cho phép biên dịch các file JavaScript
+    "noEmitOnError": true,           // Không xuất file nếu có lỗi
+    "resolveJsonModule": true,       // Hỗ trợ import file JSON
+    "sourceMap": true                // Tạo source map cho các file JS đã biên dịch
+  },
+  "include": [
+    "src/**/*"                       // Biên dịch tất cả file trong src
+  ],
+  "exclude": [
+    "node_modules",                  // Loại trừ node_modules
+    "dist"                           // Loại trừ thư mục dist
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "class-attendance-system",
+  "version": "1.0.0",
+  "description": "A class attendance system built with TypeScript",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
