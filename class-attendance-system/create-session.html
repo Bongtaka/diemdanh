@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Attendance Session</title>
+    <title>Tạo Phiên Điểm Danh</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Create Attendance Session</h1>
+        <h1>Tạo Phiên Điểm Danh</h1>
     </header>
     <main>
         <form id="create-session-form">
-            <label for="className">Class Name:</label>
-            <input type="text" id="className" required>
+            <label for="className">Tên Lớp:</label>
+            <input type="text" id="className" placeholder="Nhập tên lớp" required>
             
-            <label for="date">Date:</label>
+            <label for="date">Ngày:</label>
             <input type="date" id="date" required>
             
-            <label for="time">Time:</label>
+            <label for="time">Giờ:</label>
             <input type="time" id="time" required>
             
-            <button type="submit">Create Session</button>
+            <button type="submit">Tạo Phiên</button>
         </form>
         <script src="scripts/create-session.js"></script>
     </main>

@@ -1,20 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const sessionForm = document.getElementById('create-session-form');
+    const sessionForm = document.getElementById('session-form');
+    const sessionSelect = document.getElementById('session-select');
 
-    sessionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Load sessions from local storage
+    function loadSessions() {
+        const sessions = JSON.parse(localStorage.getItem('sessions')) || [];
+        sessionSelect.innerHTML = sessions.map((session, index) => 
+            `<option value="${index}">${session.className} (${session.date} ${session.time})</option>`
+        ).join('');
+    }
 
-        const className = document.getElementById('className').value;
-        const date = document.getElementById('date').value;
-        const time = document.getElementById('time').value;
+    sessionForm.addEventListener('submit', event => {
+        event.preventDefault();
 
-        // Call function to handle session creation
-        createSession(className, date, time);
+        const session = {
+            className: document.getElementById('class-name').value,
+            date: document.getElementById('session-date').value,
+            time: document.getElementById('session-time').value
+        };
+
+        let sessions = JSON.parse(localStorage.getItem('sessions')) || [];
+        sessions.push(session);
+        localStorage.setItem('sessions', JSON.stringify(sessions));
+
+        loadSessions();
         sessionForm.reset();
     });
 
-    function createSession(className, date, time) {
-        // Implement session creation logic here
-        console.log(`Session created: ${className}, ${date}, ${time}`);
-    }
+    loadSessions();
 });

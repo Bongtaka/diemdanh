@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Attendance</title>
+    <title>Điểm Danh</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Mark Attendance</h1>
+        <h1>Điểm Danh</h1>
     </header>
     <main>
         <form id="mark-attendance-form">
-            <label for="session">Select Session:</label>
+            <label for="session">Chọn Phiên Điểm Danh:</label>
             <select id="session" required>
-                <!-- Sessions will be populated here -->
+                <!-- Các phiên điểm danh sẽ được thêm vào đây -->
             </select>
             
-            <label for="student">Select Student:</label>
+            <label for="student">Chọn Học Sinh:</label>
             <select id="student" required>
-                <!-- Students will be populated here -->
+                <!-- Các học sinh sẽ được thêm vào đây -->
             </select>
             
-            <label for="status">Status:</label>
+            <label for="status">Trạng Thái:</label>
             <select id="status" required>
-                <option value="Present">Present</option>
-                <option value="Late">Late</option>
-                <option value="Excused">Excused</option>
-                <option value="Unexcused">Unexcused</option>
+                <option value="Present">Có mặt</option>
+                <option value="Late">Đi muộn</option>
+                <option value="Excused">Nghỉ có phép</option>
+                <option value="Unexcused">Nghỉ không phép</option>
             </select>
             
-            <label for="note">Note:</label>
-            <input type="text" id="note">
+            <label for="note">Ghi Chú:</label>
+            <input type="text" id="note" placeholder="Nhập ghi chú (nếu có)">
             
-            <button type="submit">Mark Attendance</button>
+            <button type="submit">Điểm Danh</button>
         </form>
         <script src="scripts/mark-attendance.js"></script>
     </main>

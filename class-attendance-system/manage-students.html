@@ -1,56 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Students</title>
+    <title>Quản Lý Học Sinh</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Manage Students</h1>
+        <h1>Quản Lý Học Sinh</h1>
     </header>
     <main>
         <section>
-            <h2>Add Student</h2>
+            <h2>Thêm Học Sinh</h2>
             <form id="add-student-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
+                <label for="name">Tên:</label>
+                <input type="text" id="name" placeholder="Nhập tên học sinh" required>
                 
-                <label for="dob">Date of Birth:</label>
+                <label for="dob">Ngày Sinh:</label>
                 <input type="date" id="dob" required>
                 
-                <label for="gender">Gender:</label>
+                <label for="gender">Giới Tính:</label>
                 <select id="gender" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="Male">Nam</option>
+                    <option value="Female">Nữ</option>
                 </select>
                 
-                <label for="address">Address:</label>
-                <input type="text" id="address" required>
+                <label for="address">Địa Chỉ:</label>
+                <input type="text" id="address" placeholder="Nhập địa chỉ" required>
                 
-                <label for="contact">Contact Number:</label>
-                <input type="tel" id="contact" required>
+                <label for="contact">Số Điện Thoại:</label>
+                <input type="tel" id="contact" placeholder="Nhập số điện thoại" required>
                 
-                <button type="submit">Add Student</button>
+                <button type="submit">Thêm Học Sinh</button>
             </form>
         </section>
 
         <section>
-            <h2>Student List</h2>
+            <h2>Danh Sách Học Sinh</h2>
             <table id="student-list">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Date of Birth</th>
-                        <th>Gender</th>
-                        <th>Address</th>
-                        <th>Contact Number</th>
-                        <th>Actions</th>
+                        <th>Tên</th>
+                        <th>Ngày Sinh</th>
+                        <th>Giới Tính</th>
+                        <th>Địa Chỉ</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Hành Động</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Student rows will be dynamically added here -->
+                    <!-- Các hàng học sinh sẽ được thêm động ở đây -->
                 </tbody>
             </table>
         </section>

@@ -1,23 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const attendanceForm = document.getElementById('mark-attendance-form');
+    const attendanceForm = document.getElementById('attendance-form');
+    const studentSelect = document.getElementById('student-select');
+    const sessionSelect = document.getElementById('session-select');
+    const attendanceStatus = document.getElementById('attendance-status');
+    const attendanceNote = document.getElementById('attendance-note');
 
-    // Populate session and student options here (fetch from server or static data)
+    // Load students and sessions for selection
+    function loadSelectors() {
+        const students = JSON.parse(localStorage.getItem('students')) || [];
+        const sessions = JSON.parse(localStorage.getItem('sessions')) || [];
+        
+        studentSelect.innerHTML = students.map((student, index) => 
+            `<option value="${index}">${student.name}</option>`
+        ).join('');
 
-    attendanceForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        sessionSelect.innerHTML = sessions.map((session, index) => 
+            `<option value="${index}">${session.className} (${session.date} ${session.time})</option>`
+        ).join('');
+    }
 
-        const session = document.getElementById('session').value;
-        const student = document.getElementById('student').value;
-        const status = document.getElementById('status').value;
-        const note = document.getElementById('note').value;
+    attendanceForm.addEventListener('submit', event => {
+        event.preventDefault();
 
-        // Call function to handle attendance marking
-        markAttendance(session, student, status, note);
+        const studentIndex = studentSelect.value;
+        const sessionIndex = sessionSelect.value;
+        const status = attendanceStatus.value;
+        const note = attendanceNote.value;
+
+        let sessions = JSON.parse(localStorage.getItem('sessions')) || [];
+        let session = sessions[sessionIndex];
+
+        if (!session.attendanceList) {
+            session.attendanceList = [];
+        }
+
+        const studentId = studentIndex; // Using index as student ID for simplicity
+        const attendance = {
+            studentId,
+            status,
+            note
+        };
+
+        session.attendanceList.push(attendance);
+        sessions[sessionIndex] = session;
+        localStorage.setItem('sessions', JSON.stringify(sessions));
+
+        loadSelectors();
         attendanceForm.reset();
     });
 
-    function markAttendance(session, student, status, note) {
-        // Implement attendance marking logic here
-        console.log(`Attendance marked: ${session}, ${student}, ${status}, ${note}`);
-    }
+    loadSelectors();
 });

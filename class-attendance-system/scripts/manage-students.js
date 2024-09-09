@@ -1,39 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const studentForm = document.getElementById('add-student-form');
-    const studentListTable = document.getElementById('student-list').getElementsByTagName('tbody')[0];
+    const studentForm = document.getElementById('student-form');
+    const studentList = document.getElementById('student-list');
 
-    studentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Load students from local storage
+    function loadStudents() {
+        const students = JSON.parse(localStorage.getItem('students')) || [];
+        studentList.innerHTML = students.map(student => 
+            `<li>${student.name} (${student.dob})</li>`
+        ).join('');
+    }
 
-        const name = document.getElementById('name').value;
-        const dob = document.getElementById('dob').value;
-        const gender = document.getElementById('gender').value;
-        const address = document.getElementById('address').value;
-        const contact = document.getElementById('contact').value;
+    studentForm.addEventListener('submit', event => {
+        event.preventDefault();
 
-        addStudentToTable(name, dob, gender, address, contact);
+        const student = {
+            name: document.getElementById('student-name').value,
+            dob: document.getElementById('student-dob').value,
+            gender: document.getElementById('student-gender').value,
+            address: document.getElementById('student-address').value,
+            contact: document.getElementById('student-contact').value
+        };
+
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+        students.push(student);
+        localStorage.setItem('students', JSON.stringify(students));
+
+        loadStudents();
         studentForm.reset();
     });
 
-    function addStudentToTable(name, dob, gender, address, contact) {
-        const row = studentListTable.insertRow();
-        row.insertCell().textContent = name;
-        row.insertCell().textContent = dob;
-        row.insertCell().textContent = gender;
-        row.insertCell().textContent = address;
-        row.insertCell().textContent = contact;
-        const actionsCell = row.insertCell();
-        actionsCell.innerHTML = `<button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button>`;
-
-        actionsCell.querySelector('.edit-btn').addEventListener('click', () => editStudent(row));
-        actionsCell.querySelector('.delete-btn').addEventListener('click', () => deleteStudent(row));
-    }
-
-    function editStudent(row) {
-        // Implement edit functionality here
-    }
-
-    function deleteStudent(row) {
-        row.remove();
-    }
+    loadStudents();
 });

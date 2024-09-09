@@ -1,22 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const reportForm = document.getElementById('generate-report-form');
+    const saveBtn = document.getElementById('save-btn');
+    const exitBtn = document.getElementById('exit-btn');
 
-    // Populate report session options here (fetch from server or static data)
-
-    reportForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const reportSession = document.getElementById('reportSession').value;
-
-        // Call function to generate report
-        generateReport(reportSession);
+    saveBtn.addEventListener('click', () => {
+        alert('Data saved successfully!');
+        // Here, you could implement additional logic to save data to a server if needed.
     });
 
-    function generateReport(reportSession) {
-        // Implement report generation logic here
-        console.log(`Report generated for session: ${reportSession}`);
-        // Update report content area with generated report data
-        const reportContent = document.getElementById('report-content');
-        reportContent.innerHTML = `<p>Report for session ${reportSession} will be displayed here.</p>`;
-    }
+    exitBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to exit? Unsaved changes will be lost.')) {
+            window.location.href = 'index.html'; // Redirect to the main page or perform other exit actions
+        }
+    });
 });
