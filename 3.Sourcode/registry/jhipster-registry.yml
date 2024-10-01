@@ -1,0 +1,26 @@
+services:
+  jhipster-registry:
+    image: jhipster/jhipster-registry:v7.4.0
+    volumes:
+      - ./central-server-config:/central-config
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      #- SPRING_PROFILES_ACTIVE=dev,api-docs
+      - SPRING_SECURITY_USER_PASSWORD=admin
+      - JHIPSTER_REGISTRY_PASSWORD=admin
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:./central-config/localhost-config/
+      # New environment variables from your config
+      - JHIPSTER_CACHE_HAZELCAST_TIME_TO_LIVE_SECONDS=3600
+      - JHIPSTER_CACHE_HAZELCAST_BACKUP_COUNT=1
+      - JHIPSTER_REGISTRY_PASSWORD=admin
+      - JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET=OTRlOTgwZGZjNWY4ZmJkZTAzNjg4MDNhMTlhOTQ1NjJjZjFiMWM3YTFmY2MwMjM0ZDM0NWE5OWM0ZGFmNGUxMzc5YWNkMzk1M2U4MWRkOGJmY2Y3Nzg5NDAxMmNiMmNkMTEwNWNmYmUyMmEyZDdlNDc5NjRkMWRhZjExODEyMGQ=
+      - JHIPSTER_SECURITY_AUTHENTICATION_JWT_TOKEN_VALIDITY_IN_SECONDS=86400
+      - JHIPSTER_SECURITY_AUTHENTICATION_JWT_TOKEN_VALIDITY_IN_SECONDS_FOR_REMEMBER_ME=2592000
+    ports:
+      - 127.0.0.1:8761:8761
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761/management/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
